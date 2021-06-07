@@ -1,5 +1,6 @@
 import {
     makeStyles,
+    Box,
     Button,
     Paper,
     Typography,
@@ -12,16 +13,17 @@ import uclalogo from '../components/blockchainatuclalogo.png';
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        flexDirection: 'row',
         justifyContent: 'center',
     },
     paper: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        textAlign: 'center',
-        justifyContent: 'space-between',
         width: '100%',
+    },
+    box: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        maxWidth: '960px',
+        margin: 'auto',
     },
     titleAndLogo: {
         display: 'flex',
@@ -47,19 +49,21 @@ function Header(props) {
     return (
         <div className={classes.root}>
             <Paper square className={classes.paper}>
-                <div className={classes.titleAndLogo}>
-                    <Link to="/">
-                        <img src={uclalogo} className={classes.logo} alt="bc@LA logo"/>
-                    </Link>
+                <Box className={classes.box}>
+                    <div className={classes.titleAndLogo}>
+                        <Link to="/">
+                            <img src={uclalogo} className={classes.logo} alt="bc@LA logo"/>
+                        </Link>
 
-                    <Typography className={classes.title} variant='h6'>
-                        governance portal
-                    </Typography>
-                </div>
+                        <Typography className={classes.title} variant='h6'>
+                            governance
+                        </Typography>
+                    </div>
 
-                <Button className={classes.connectButton}>
-                    connect
-                </Button>
+                    <Button className={classes.connectButton} onClick={props.connectButtonOnClick}>
+                        connect
+                    </Button>
+                </Box>
             </Paper>
       </div>
     );

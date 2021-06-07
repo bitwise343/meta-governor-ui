@@ -1,9 +1,6 @@
 import {
-    Link
-} from 'react-router-dom';
-import {
     makeStyles,
-    Typography,
+    Box,
 } from '@material-ui/core';
 
 import GovIcon from '../components/GovIcon';
@@ -16,8 +13,10 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
-    }
+        justifyContent: 'space-evenly',
+        maxWidth: '480px',
+        width: '100%'
+    },
 }));
 
 
@@ -25,19 +24,26 @@ function GovNav() {
     const classes = useStyles();
 
     return (
-            <div className={classes.root}>
-                <Link to="/aave-portal">
-                    <GovIcon logo={aavelogo} alt={"aave logo"} />
-                </Link>
-
-                <Link to="/compound-portal">
-                    <GovIcon logo={compoundlogo} alt={"compound logo"} />
-                </Link>
-
-                <Link to="/uni-portal">
-                    <GovIcon logo={unilogo} alt={"uni logo"} />
-                </Link>
-            </div>
+        <Box className={classes.root}>
+            <GovIcon
+                logo={aavelogo}
+                alt={"aave logo"}
+                linkTo="/aave-portal"
+                name="aave"
+            />
+            <GovIcon
+                logo={compoundlogo}
+                alt={"compound logo"}
+                linkTo="/compound-portal"
+                name="compound"
+            />
+            <GovIcon
+                logo={unilogo}
+                alt={"uni logo"}
+                linkTo="/uni-portal"
+                name="uniswap"
+            />
+        </Box>
     );
 }
 

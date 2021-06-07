@@ -1,51 +1,52 @@
 import {
     makeStyles,
+    Box,
     Paper,
     Typography,
 } from '@material-ui/core';
 
 import GovNav from '../components/GovNav';
-import BasicTable from '../components/BasicTable';
+import DelegationStats from '../components/DelegationStats';
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
-        maxWidth: '960px',
+        maxWidth: '480px',
         margin: 'auto',
+    },
+    portalbox: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        margin: theme.spacing(1),
     },
     paper: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: theme.spacing(1),
-        marginBottom: theme.spacing(1),
-        marginTop: theme.spacing(1),
+        padding: theme.spacing(0.5),
     }
 }));
 
-function Home() {
+function Home(props) {
     const classes = useStyles();
 
     return (
-            <div className={classes.root}>
-                <Paper className={classes.paper} >
-                    <Typography variant='h6'>
-                        about
-                    </Typography>
-                    <Typography variant='body'>
-                        blockchain@UCLA helps govern multiple defi protocols via vote delegation. It is our honor and privilege to be delegates for Aave, Compound, and Uniswap!
-                    </Typography>
-                    <Typography variant='body'>
-                        choose your portal:
+            <Box className={classes.root}>
+                <Box className={classes.portalbox}>
+                    <Typography>
+                        choose a portal
                     </Typography>
                     <GovNav />
+                </Box>
 
+                <Paper square className={classes.paper}>
+                    <DelegationStats provider={props.provider}/>
                 </Paper>
 
-                <BasicTable />
-            </div>
+            </Box>
     );
 }
 

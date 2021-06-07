@@ -1,22 +1,26 @@
 import {
+    Link
+} from 'react-router-dom';
+import {
     makeStyles,
-    Paper,
+    Box,
+    Typography,
 } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
-    paper: {
+    container: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
         margin: theme.spacing(1),
-        padding: theme.spacing(1),
-        textAlign: 'center',
+        alignItems: 'center',
     },
     logo: {
-        maxHeight: '50px',
-        width: 'auto',
+        maxHeight: '64px',
         borderRadius: '50%',
+    },
+    text: {
+        ...theme.typography.button,
     }
 }));
 
@@ -24,9 +28,12 @@ function GovIcon(props) {
     const classes = useStyles();
 
     return (
-        <Paper className={classes.paper}>
-            <img src={props.logo} alt={props.alt} className={classes.logo} />
-        </Paper>
+        <Box className={classes.container}>
+            <Link to={props.linkTo}>
+                <img src={props.logo} alt={props.alt} className={classes.logo} />
+            </Link>
+            <Typography className={classes.text}>{props.name}</Typography>
+        </Box>
     );
 }
 
