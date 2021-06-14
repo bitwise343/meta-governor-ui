@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 
 import {
-    aaveContract,
+    aaveGovernanceV2,
 } from '../scripts/utils';
 
 
@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         padding: theme.spacing(1),
         maxWidth: '960px',
-        margin: 'auto',
         marginBottom: theme.spacing(1),
         width: '100%',
     },
@@ -41,56 +40,18 @@ const useStyles = makeStyles((theme) => ({
 function AaveProposalInterface(props) {
     const classes = useStyles();
 
-    const [executor, setExecutor] = useState(0);
-    const [targets, setTargets] = useState(0);
-    const [values, setValues] = useState(0);
-    const [signatures, setSignatures] = useState(0);
-    const [calldatas, setCalldatas] = useState(0);
-    const [withDelegatecalls, setWithDelegatecalls] = useState(0);
-    const [ipfsHash, setIpfsHash] = useState(0);
+    const [executor, setExecutor] = useState();
+    const [targets, setTargets] = useState();
+    const [values, setValues] = useState();
+    const [signatures, setSignatures] = useState();
+    const [calldatas, setCalldatas] = useState();
+    const [withDelegatecalls, setWithDelegatecalls] = useState();
+    const [ipfsHash, setIpfsHash] = useState();
 
-    const executorOnChange = e => {
-        setExecutor(e.target.value);
-    };
-
-    const targetsOnChange = e => {
-        setTargets(e.target.value);
-    };
-
-    const valuesOnChange = e => {
-        setValues(e.target.value);
-    };
-
-    const signaturesOnChange = e => {
-        setSignatures(e.target.value);
-    };
-
-    const calldatasOnChange = e => {
-        setCalldatas(e.target.value);
-    };
-
-    const withDelegatecallsOnChange = e => {
-        setWithDelegatecalls(e.target.value);
-    };
-
-    const ipfsHashOnChange = e => {
-        setIpfsHash(e.target.value);
-    };
-
-    const proposeOnClick = async (
-            provider,
-            signer,
-            executor,
-            targets,
-            values,
-            signatures,
-            calldatas,
-            withDelegatecalls,
-            ipfsHash
-        ) => {
-        const aave = aaveContract(provider);
+    const proposeOnClick = async () => {
         try {
-            await aave.connect(signer).create(
+            const aave = aaveGovernanceV2(props.provider);
+            await aave.connect(props.signer).create(
                 executor,
                 targets,
                 values,
@@ -105,66 +66,54 @@ function AaveProposalInterface(props) {
     };
 
     return (
-        <Paper square className={classes.paper}>
+        <Paper className={classes.paper}>
             <TextField
                 className={classes.textField}
                 label='executor'
                 variant='outlined'
-                onChange={executorOnChange}
+                onChange={e => setExecutor(e.target.value)}
             />
             <TextField
                 className={classes.textField}
                 label='targets'
                 variant='outlined'
-                onChange={targetsOnChange}
+                onChange={e => setTargets(e.target.value)}
             />
             <TextField
                 className={classes.textField}
                 label='values'
                 variant='outlined'
-                onChange={valuesOnChange}
+                onChange={e => setValues(e.target.value)}
             />
             <TextField
                 className={classes.textField}
                 label='signatures'
                 variant='outlined'
-                onChange={signaturesOnChange}
+                onChange={e => setSignatures(e.target.value)}
             />
             <TextField
                 className={classes.textField}
                 label='calldatas'
                 variant='outlined'
-                onChange={calldatasOnChange}
+                onChange={e => setCalldatas(e.target.value)}
             />
             <TextField
                 className={classes.textField}
                 label='withDelegatecalls'
                 variant='outlined'
-                onChange={withDelegatecallsOnChange}
+                onChange={e => setWithDelegatecalls(e.target.value)}
             />
             <TextField
                 className={classes.textField}
                 label='ipfsHash'
                 variant='outlined'
-                onChange={ipfsHashOnChange}
+                onChange={e => setIpfsHash(e.target.value)}
             />
 
             <Button
                 className={classes.button}
                 variant='outlined'
-                onClick={
-                    () => proposeOnClick(
-                        props.provider,
-                        props.signer,
-                        executor,
-                        targets,
-                        values,
-                        signatures,
-                        calldatas,
-                        withDelegatecalls,
-                        ipfsHash
-                    )
-                }
+                onClick={proposeOnClick}
             >
                 propose
             </Button>

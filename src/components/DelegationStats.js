@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        maxWidth: '480px',
+        width: '100%'
     }
 }));
 

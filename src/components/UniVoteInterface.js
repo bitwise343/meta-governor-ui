@@ -40,17 +40,8 @@ const useStyles = makeStyles((theme) => ({
 
 function UniVoteInterface(props) {
     const classes = useStyles();
-
     const [proposalId, setProposalId] = useState(0);
     const [support, setSupport] = useState(false);
-
-    const proposalIdOnChange = e => {
-        setProposalId(e.target.value);
-    }
-
-    const supportOnChange = e => {
-        setSupport(e.target.value);
-    }
 
     const voteOnClick = async (provider, signer, proposalId, support) => {
         const uni = uniContract(provider);
@@ -62,18 +53,18 @@ function UniVoteInterface(props) {
     }
 
     return (
-        <Paper square className={classes.paper}>
+        <Paper className={classes.paper}>
             <TextField
                 label='proposalId'
                 className={classes.textField}
                 variant='outlined'
-                onChange={proposalIdOnChange}
+                onChange={e => setProposalId(e.target.value)}
             />
             <TextField
                 label='support'
                 className={classes.textField}
                 variant='outlined'
-                onChange={supportOnChange}
+                onChange={e => setSupport(e.target.value)}
             />
             <Button
                 className={classes.button}

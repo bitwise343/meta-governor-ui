@@ -4,9 +4,9 @@ import {
 } from '@material-ui/core';
 
 import GovIcon from '../components/GovIcon';
-import aavelogo from '../components/aave.png';
-import compoundlogo from '../components/compound.png';
-import unilogo from '../components/uniswap.png';
+import aavelogo from '../assets/aave.png';
+import compoundlogo from '../assets/compound.png';
+import unilogo from '../assets/uniswap.png';
 
 
 const useStyles = makeStyles((theme) => ({

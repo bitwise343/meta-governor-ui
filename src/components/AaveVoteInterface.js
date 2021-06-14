@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 
 import {
-    aaveContract,
+    aaveGovernanceV2,
 } from '../scripts/utils';
 
 
@@ -22,12 +22,8 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         padding: theme.spacing(1),
         maxWidth: '960px',
-        margin: 'auto',
         marginBottom: theme.spacing(1),
         width: '100%',
-    },
-    text: {
-        marginRight: theme.spacing(1),
     },
     textField: {
         width: '100%',
@@ -53,7 +49,7 @@ function AaveVoteInterface(props) {
     }
 
     const voteOnClick = async (provider, signer, proposalId, support) => {
-        const aave = aaveContract(provider);
+        const aave = aaveGovernanceV2(provider);
         try {
             await aave.connect(signer).submitVote(proposalId, support);
         } catch(err) {
@@ -62,16 +58,16 @@ function AaveVoteInterface(props) {
     }
 
     return (
-        <Paper square className={classes.paper}>
+        <Paper className={classes.paper}>
             <TextField
-                label='proposalId'
                 className={classes.textField}
+                label='proposalId'
                 variant='outlined'
                 onChange={proposalIdOnChange}
             />
             <TextField
-                label='support'
                 className={classes.textField}
+                label='support'
                 variant='outlined'
                 onChange={supportOnChange}
             />

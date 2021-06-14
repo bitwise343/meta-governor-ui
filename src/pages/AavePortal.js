@@ -8,8 +8,8 @@ import {
 import GovIcon from '../components/GovIcon';
 import AaveVoteInterface from '../components/AaveVoteInterface';
 import AaveProposalInterface from '../components/AaveProposalInterface';
-import aavelogo from '../components/aave.png';
-
+import AaveProposalViewer from '../components/AaveProposalViewer';
+import aavelogo from '../assets/aave.png';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         maxWidth: '960px',
         margin: 'auto',
+        padding: theme.spacing(1),
     },
     portalbox: {
         display: 'flex',
@@ -24,12 +25,6 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         margin: theme.spacing(1),
     },
-    paper: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: theme.spacing(0.5),
-    }
 }));
 
 function AavePortal(props) {
@@ -49,12 +44,14 @@ function AavePortal(props) {
                     />
                 </Box>
 
-                <AaveVoteInterface
+                <AaveProposalViewer />
+
+                <AaveProposalInterface
                     provider={props.provider}
                     signer={props.signer}
                 />
 
-                <AaveProposalInterface
+                <AaveVoteInterface
                     provider={props.provider}
                     signer={props.signer}
                 />

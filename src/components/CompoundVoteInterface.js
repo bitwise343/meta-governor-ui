@@ -62,7 +62,7 @@ function CompoundVoteInterface(props) {
     }
 
     return (
-        <Paper square className={classes.paper}>
+        <Paper className={classes.paper}>
             <TextField
                 label='proposalId'
                 className={classes.textField}

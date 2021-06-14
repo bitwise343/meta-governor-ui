@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
     logo: {
-        maxHeight: '64px',
+        maxHeight: theme.spacing(8),
         borderRadius: '50%',
     },
     text: {
@@ -29,10 +29,19 @@ function GovIcon(props) {
 
     return (
         <Box className={classes.container}>
+
             <Link to={props.linkTo}>
-                <img src={props.logo} alt={props.alt} className={classes.logo} />
+                <img
+                    src={props.logo}
+                    alt={props.alt}
+                    className={classes.logo}
+                />
             </Link>
-            <Typography className={classes.text}>{props.name}</Typography>
+
+            <Typography className={classes.text}>
+                {props.name}
+            </Typography>
+
         </Box>
     );
 }

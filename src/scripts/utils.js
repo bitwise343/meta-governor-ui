@@ -5,12 +5,22 @@ function formatValue(value) {
     return Number(Number(value).toFixed(0)).toLocaleString();
 }
 
-function aaveContract(provider) {
+function aaveGovernanceV2(provider) {
+    return new ethers.Contract(
+        '0xEC568fffba86c094cf06b22134B23074DFE2252c',
+        [
+            'function submitVote(uint256 proposalId, bool support) external',
+            'function create(address executor,address[] memory targets,uint256[] memory values,string[] memory signatures,bytes[] memory calldatas,bool[] memory withDelegatecalls,bytes32 ipfsHash) external returns (uint256)',
+        ],
+        provider
+    );
+}
+
+function aaveGovernanceStrategy(provider) {
     return new ethers.Contract(
         '0xb7e383ef9b1e9189fc0f71fb30af8aa14377429e',
         [
             'function getVotingPowerAt(address user, uint256 blockNumber) public view returns (uint256)',
-            'function submitVote(uint256 proposalId, bool support) external'
         ],
         provider
     );
@@ -35,13 +45,15 @@ function uniContract(provider) {
 function getPrices() {
     return fetch(
         'https://api.coingecko.com/api/v3/simple/price?ids=aave,compound-governance-token,uniswap&vs_currencies=usd'
-    ).then((response) =>  response.json())
+    ).then(
+        (response) =>  response.json()
+    )
     .then(
         (data) => {
-        const aavePrice = data['aave']['usd'];
-        const compoundPrice = data['compound-governance-token']['usd'];
-        const uniPrice = data['uniswap']['usd'];
-        return { aavePrice, compoundPrice, uniPrice };
+            const aavePrice = data['aave']['usd'];
+            const compoundPrice = data['compound-governance-token']['usd'];
+            const uniPrice = data['uniswap']['usd'];
+            return { aavePrice, compoundPrice, uniPrice };
         }
     )
     .catch(
@@ -52,7 +64,7 @@ function getPrices() {
 }
 
 async function getDelegates(provider) {
-    const aave = aaveContract(provider);
+    const aave = aaveGovernanceStrategy(provider);
     const compound = compoundContract(provider);
     const uni = uniContract(provider);
 
@@ -70,12 +82,17 @@ async function getDelegates(provider) {
 }
 
 async function getTableData(provider) {
-    const { aavePrice, compoundPrice, uniPrice } = await getPrices();
+    const {
+        aavePrice,
+        compoundPrice,
+        uniPrice
+    } = await getPrices();
     const {
         aaveDelegates,
         compoundDelegates,
         uniDelegates
     } = await getDelegates(provider);
+
     return [
         {
             delegation: `${formatValue(aaveDelegates)} AAVE`,
@@ -93,7 +110,8 @@ async function getTableData(provider) {
 }
 
 export {
-    aaveContract,
+    aaveGovernanceV2,
+    aaveGovernanceStrategy,
     compoundContract,
     uniContract,
     getTableData

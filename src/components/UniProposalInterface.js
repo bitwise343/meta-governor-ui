@@ -1,13 +1,19 @@
 import {
+    useCallback,
     useState,
 } from 'react';
 
 import {
     makeStyles,
+    Box,
     Button,
     Paper,
     TextField,
+    TextareaAutosize,
+    Typography,
 } from '@material-ui/core';
+
+import Markdown from './Markdown.js';
 
 import {
     uniContract,
@@ -15,6 +21,23 @@ import {
 
 
 const useStyles = makeStyles((theme) => ({
+    box: {
+        width: '100%',
+        marginBottom: theme.spacing(1),
+    },
+    descriptionBox: {
+        width: '100%',
+        minHeight: theme.spacing(2),
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: '#bdbdbd',
+        borderRadius: theme.spacing(0.5),
+        padding: theme.spacing(1),
+        marginBottom: theme.spacing(1),
+        '&:hover': {
+            borderColor: 'black',
+        }
+    },
     paper: {
         display: 'flex',
         flexDirection: 'column',
@@ -27,14 +50,17 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
     },
     text: {
-        marginRight: theme.spacing(1),
+        color: '#616161',
     },
     textField: {
         width: '100%',
-        margin: theme.spacing(0.5),
+        marginBottom: theme.spacing(1),
     },
     button: {
         margin: theme.spacing(1)
+    },
+    markdownViewer: {
+        // padding: theme.spacing(1)
     }
 }));
 
@@ -45,27 +71,10 @@ function UniProposalInterface(props) {
     const [values, setValues] = useState(0);
     const [signatures, setSignatures] = useState(0);
     const [calldatas, setCalldatas] = useState(0);
-    const [description, setDescription] = useState(0);
-
-    const targetsOnChange = e => {
-        setTargets(e.target.value);
-    }
-
-    const valuesOnChange = e => {
-        setValues(e.target.value);
-    }
-
-    const signaturesOnChange = e => {
-        setSignatures(e.target.value);
-    }
-
-    const calldatasOnChange = e => {
-        setCalldatas(e.target.value);
-    }
-
-    const descriptionOnChange = e => {
-        setDescription(e.target.value);
-    }
+    const [description, setDescription] = useState(
+        '# click here to edit the description\n\n## this is a markdown editor'
+    );
+    const [descriptionFocus, setDescriptionFocus] = useState(false);
 
     const proposeOnClick = async (
             provider,
@@ -91,36 +100,59 @@ function UniProposalInterface(props) {
     }
 
     return (
-        <Paper square className={classes.paper}>
+        <Paper className={classes.paper}>
+        <Box
+            className={classes.descriptionBox}
+            onClick={() => setDescriptionFocus(true)}
+            onBlur={() => setDescriptionFocus(false)}
+        >
+            {
+                descriptionFocus ?
+                <TextField
+                    className={classes.textField}
+                    multiline
+                    autoFocus
+                    rowsMax={100}
+                    value={description}
+                    label='description'
+                    onChange={e => setDescription(e.target.value)}
+                    InputProps={{ disableUnderline: true }}
+                /> :
+
+                <Box className={classes.box}>
+                    <Typography className={classes.text} variant='caption'>
+                        description
+                    </Typography>
+
+                     <Markdown className={classes.markdownViewer} >
+                         {description}
+                    </Markdown>
+                </Box>
+            }
+        </Box>
             <TextField
                 className={classes.textField}
                 label='targets'
                 variant='outlined'
-                onChange={targetsOnChange}
+                onChange={e => setTargets(e.target.value)}
             />
             <TextField
                 className={classes.textField}
                 label='values'
                 variant='outlined'
-                onChange={valuesOnChange}
+                onChange={e => setValues(e.target.value)}
             />
             <TextField
                 className={classes.textField}
                 label='signatures'
                 variant='outlined'
-                onChange={signaturesOnChange}
+                onChange={e => setSignatures(e.target.value)}
             />
             <TextField
                 className={classes.textField}
                 label='calldatas'
                 variant='outlined'
-                onChange={calldatasOnChange}
-            />
-            <TextField
-                className={classes.textField}
-                label='description'
-                variant='outlined'
-                onChange={descriptionOnChange}
+                onChange={e => setCalldatas(e.target.value)}
             />
 
             <Button

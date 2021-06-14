@@ -8,7 +8,8 @@ import {
 import GovIcon from '../components/GovIcon';
 import CompoundVoteInterface from '../components/CompoundVoteInterface';
 import CompoundProposalInterface from '../components/CompoundProposalInterface';
-import compoundlogo from '../components/compound.png';
+import CompoundProposalViewer from '../components/CompoundProposalViewer';
+import compoundlogo from '../assets/compound.png';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         maxWidth: '960px',
         margin: 'auto',
+        padding: theme.spacing(1),
     },
     portalbox: {
         display: 'flex',
@@ -49,12 +51,14 @@ function CompoundPortal(props) {
                     />
                 </Box>
 
-                <CompoundVoteInterface
+                <CompoundProposalViewer />
+
+                <CompoundProposalInterface
                     provider={props.provider}
                     signer={props.signer}
                 />
 
-                <CompoundProposalInterface
+                <CompoundVoteInterface
                     provider={props.provider}
                     signer={props.signer}
                 />

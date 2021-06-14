@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-import uclalogo from '../components/blockchainatuclalogo.png';
+import uclalogo from '../assets/blockchainatuclalogo.png';
 
 
 const useStyles = makeStyles((theme) => ({

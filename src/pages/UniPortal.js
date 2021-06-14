@@ -8,7 +8,8 @@ import {
 import GovIcon from '../components/GovIcon';
 import UniVoteInterface from '../components/UniVoteInterface';
 import UniProposalInterface from '../components/UniProposalInterface';
-import unilogo from '../components/uniswap.png';
+import UniProposalViewer from '../components/UniProposalViewer';
+import unilogo from '../assets/uniswap.png';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         maxWidth: '960px',
         margin: 'auto',
+        padding: theme.spacing(1),
     },
     portalbox: {
         display: 'flex',
@@ -49,12 +51,14 @@ function UniPortal(props) {
                     />
                 </Box>
 
-                <UniVoteInterface
+                <UniProposalViewer />
+
+                <UniProposalInterface
                     provider={props.provider}
                     signer={props.signer}
                 />
 
-                <UniProposalInterface
+                <UniVoteInterface
                     provider={props.provider}
                     signer={props.signer}
                 />
