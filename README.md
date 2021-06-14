@@ -7,6 +7,14 @@ Vote on Aave, Compound, or Uniswap using this governance interface.
  - finish proposal viewer
    - add vote functionality directly to active proposals
 
+# Usage
+```sh
+git clone https://github.com/uclablockchain/bruin-gov/
+cd bruin-gov
+yarn
+yarn start
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
