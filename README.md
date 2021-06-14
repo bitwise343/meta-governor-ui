@@ -1,3 +1,12 @@
+# Overview
+Vote on Aave, Compound, or Uniswap using this governance interface.
+
+# TODO
+ - form validation
+ - change input fields to be arrays/lists
+ - finish proposal viewer
+   - add vote functionality directly to active proposals
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
