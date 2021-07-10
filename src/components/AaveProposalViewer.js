@@ -1,8 +1,4 @@
 import {
-    useState,
-} from 'react';
-
-import {
     makeStyles,
     Paper,
 } from '@material-ui/core';

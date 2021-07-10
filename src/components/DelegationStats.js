@@ -54,7 +54,7 @@ function DelegationStats(props) {
           }
         };
         checkProvider();
-    }, []);
+    }, [props.provider]);
 
     return (
         <TableContainer component={Box} className={classes.root}>

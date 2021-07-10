@@ -1,20 +1,9 @@
 import {
-    useState,
-} from 'react';
-
-import {
     makeStyles,
-    Button,
     Paper,
-    TextField,
-    Typography,
 } from '@material-ui/core';
 
 import Markdown from './Markdown.js';
-
-import {
-    uniContract,
-} from '../scripts/utils';
 
 
 const markdown = `

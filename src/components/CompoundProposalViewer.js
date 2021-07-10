@@ -1,21 +1,9 @@
 import {
-    useState,
-} from 'react';
-
-import {
     makeStyles,
-    Button,
     Paper,
-    TextField,
-    Typography,
 } from '@material-ui/core';
 
 import Markdown from './Markdown.js';
-
-import {
-    compoundContract,
-} from '../scripts/utils';
-
 
 const markdown = `
 # Proposal Viewer

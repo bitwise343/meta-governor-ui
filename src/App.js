@@ -1,5 +1,6 @@
 import {
     useState,
+    useEffect
 } from 'react';
 
 import {
@@ -23,6 +24,10 @@ function App() {
     );
     const [signer, setSigner] = useState();
     const [account, setAccount] = useState();
+
+    useEffect(() => {
+      setProvider(new ethers.providers.Web3Provider(window.ethereum));
+    }, [])
 
     async function connectOnClick() {
       const [_account] = await provider.send("eth_requestAccounts", []);
