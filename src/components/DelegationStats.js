@@ -44,7 +44,16 @@ function DelegationStats(props) {
     ]);
 
     useEffect(() => {
-        onClick(props.provider, setRows);
+        const checkProvider = async() => {
+          const chainId = await (await props.provider.getNetwork()).chainId;
+          if (chainId === 1) {
+            onClick(props.provider, setRows);
+          }
+          else {
+            alert('Invalid chainId. Please connect to ETH mainnet then refresh the page.')
+          }
+        };
+        checkProvider();
     }, []);
 
     return (

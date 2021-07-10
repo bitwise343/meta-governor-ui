@@ -17,29 +17,26 @@ import CompoundPortal from './pages/CompoundPortal';
 import UniPortal from './pages/UniPortal';
 
 
-let provider;
-window.ethereum.enable()
-.then(provider = new ethers.providers.Web3Provider(window.ethereum));
-const signer = provider.getSigner();
-
 function App() {
-    // const [ chainId, setChainId ] = useState(31337);
+    const [provider, setProvider] = useState(
+      new ethers.providers.Web3Provider(window.ethereum)
+    );
+    const [signer, setSigner] = useState();
+    const [account, setAccount] = useState();
 
     async function connectOnClick() {
-        const _chainId = (await provider.getNetwork()).chainId;
-        const address = await signer.getAddress();
-        alert(`Connected to chainId: ${_chainId} with account: ${address}`);
-        // if (_chainId != chainId) {
-        //     alert(`Invalid chainId: ${_chainId}. Please connect to ${chainId}`);
-        // } else {
-        //     const address = await signer.getAddress();
-        //     alert(`Connected to chainId: ${chainId} with account: ${address}`);
-        // }
+      const [_account] = await provider.send("eth_requestAccounts", []);
+      setAccount(_account);
+      const _signer = provider.getSigner();
+      setSigner(_signer);
     };
 
     return (
         <Router>
             <Header connectButtonOnClick={connectOnClick} />
+            <center>
+            <p>{account ? `Connected to ${account.slice(0, 6)}...${account.slice(38)}` : ''}</p>
+            </center>
 
             <Switch>
 
@@ -60,6 +57,9 @@ function App() {
                 </Route>
 
             </Switch>
+            <center>
+            <p>This site is a work in progress! It is without warranty and user assumes all risk.</p>
+            </center>
         </Router>
     );
 }
