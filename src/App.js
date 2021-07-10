@@ -63,7 +63,7 @@ function App() {
 
             </Switch>
             <center>
-            <p>This site is a work in progress! It is without warranty and user assumes all risk.</p>
+              <p>This unfunded site is a friggin work in progress! It is without warranty and user assumes all risks, whatever they may be!</p>
             </center>
         </Router>
     );

@@ -8,7 +8,7 @@ import {
 import GovIcon from '../components/GovIcon';
 import CompoundVoteInterface from '../components/CompoundVoteInterface';
 import CompoundProposalInterface from '../components/CompoundProposalInterface';
-import CompoundProposalViewer from '../components/CompoundProposalViewer';
+// import CompoundProposalViewer from '../components/CompoundProposalViewer';
 import compoundlogo from '../assets/compound.png';
 
 
@@ -50,8 +50,6 @@ function CompoundPortal(props) {
                         className={classes.logo}
                     />
                 </Box>
-
-                <CompoundProposalViewer />
 
                 <CompoundProposalInterface
                     provider={props.provider}

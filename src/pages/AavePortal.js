@@ -8,7 +8,7 @@ import {
 import GovIcon from '../components/GovIcon';
 import AaveVoteInterface from '../components/AaveVoteInterface';
 import AaveProposalInterface from '../components/AaveProposalInterface';
-import AaveProposalViewer from '../components/AaveProposalViewer';
+// import AaveProposalViewer from '../components/AaveProposalViewer';
 import aavelogo from '../assets/aave.png';
 
 const useStyles = makeStyles((theme) => ({
@@ -43,8 +43,6 @@ function AavePortal(props) {
                         className={classes.logo}
                     />
                 </Box>
-
-                <AaveProposalViewer />
 
                 <AaveProposalInterface
                     provider={props.provider}

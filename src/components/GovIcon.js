@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
     logo: {
-        maxHeight: theme.spacing(8),
+        maxHeight: theme.spacing(6),
         borderRadius: '50%',
     },
     text: {

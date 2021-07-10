@@ -8,7 +8,7 @@ import {
 import GovIcon from '../components/GovIcon';
 import UniVoteInterface from '../components/UniVoteInterface';
 import UniProposalInterface from '../components/UniProposalInterface';
-import UniProposalViewer from '../components/UniProposalViewer';
+// import UniProposalViewer from '../components/UniProposalViewer';
 import unilogo from '../assets/uniswap.png';
 
 
@@ -50,8 +50,6 @@ function UniPortal(props) {
                         className={classes.logo}
                     />
                 </Box>
-
-                <UniProposalViewer />
 
                 <UniProposalInterface
                     provider={props.provider}

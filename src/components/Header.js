@@ -7,7 +7,8 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-import uclalogo from '../assets/blockchainatuclalogo.png';
+// import uclalogo from '../assets/blockchainatuclalogo.png';
+import uclalogo from '../assets/dogeatuni.png';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +49,7 @@ function Header(props) {
 
     return (
         <div className={classes.root}>
-            <Paper square className={classes.paper}>
+            <Paper square className={classes.paper} elevation={10}>
                 <Box className={classes.box}>
                     <div className={classes.titleAndLogo}>
                         <Link to="/">
