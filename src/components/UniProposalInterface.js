@@ -154,6 +154,7 @@ function UniProposalInterface(props) {
             />
 
             <Button
+                disabled
                 className={classes.button}
                 variant='outlined'
                 onClick={

@@ -1,6 +1,5 @@
 import {
     useState,
-    useEffect
 } from 'react';
 
 import {
@@ -18,29 +17,38 @@ import CompoundPortal from './pages/CompoundPortal';
 import UniPortal from './pages/UniPortal';
 
 
+const providerViewKey = 'https://eth-mainnet.alchemyapi.io/v2/FWe3jQwzdHAOmCEys_jrrXL3GNnpMAMg';
+
 function App() {
     const [provider, setProvider] = useState(
-      new ethers.providers.Web3Provider(window.ethereum)
+      new ethers.providers.JsonRpcProvider(providerViewKey)
     );
     const [signer, setSigner] = useState();
     const [account, setAccount] = useState();
 
-    useEffect(() => {
-      setProvider(new ethers.providers.Web3Provider(window.ethereum));
-    }, [])
 
     async function connectOnClick() {
-      const [_account] = await provider.send("eth_requestAccounts", []);
-      setAccount(_account);
-      const _signer = provider.getSigner();
-      setSigner(_signer);
+      if (typeof window.ethereum === undefined) {
+        alert('This website requires the Metamask Extension. Head to https://metamask.io/ to install it!')
+      } else {
+        const _provider = new ethers.providers.Web3Provider(window.ethereum);
+        const [_account] = await _provider.send("eth_requestAccounts", []);
+        const _signer = _provider.getSigner();
+        setProvider(_provider);
+        setAccount(_account);
+        setSigner(_signer);
+      }
     };
 
     return (
         <Router>
             <Header connectButtonOnClick={connectOnClick} />
             <center>
-            <p>{account ? `Connected to ${account.slice(0, 6)}...${account.slice(38)}` : ''}</p>
+            <p>{
+              account ?
+              `Connected to ${account.slice(0, 6)}...${account.slice(38)}`
+              : ''
+            }</p>
             </center>
 
             <Switch>
@@ -63,7 +71,7 @@ function App() {
 
             </Switch>
             <center>
-              <p>This unfunded site is a friggin work in progress! It is without warranty and user assumes all risks, whatever they may be!</p>
+              <p>This site is a work in progress. It is without warranty and any user assumes all risks, whatever they may be!</p>
             </center>
         </Router>
     );

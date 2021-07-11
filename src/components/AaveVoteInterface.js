@@ -72,6 +72,7 @@ function AaveVoteInterface(props) {
                 onChange={supportOnChange}
             />
             <Button
+                disabled
                 className={classes.button}
                 variant='outlined'
                 onClick={

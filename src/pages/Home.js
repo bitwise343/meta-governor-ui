@@ -11,26 +11,35 @@ import DelegationStats from '../components/DelegationStats';
 
 
 const markdown = `
-# Democratizing DeFi Governance
-The mostly prestigious student organizations across the whole of the entire
-**United States of America** are given the super dank privilege of participating
-in turbo-decentralized governance (tm) thanks to the cutting-edge
-decentralization mechanism of decentralized governance whereby vote delegation
-enables expert undergraduate students to command the power of millions without
-the ability to spend a _single cent_ of it. This is decentralized collaboration
-on both **steroids** and **crack** and enables the powerful innocent hopes and
-dreams of aspiring computer scientists across this beautiful heckin GLOBERINO.
+# DeFi Governance Meets Student Governance
+The Blockchain at UCLA student organization is responsible for deliberating on
+governance decisions across the following three decentralized protocols:
 
- - FUTURE OF FRANCE, can I get an AMEN?
+1. [Aave Protocol](https://aave.com/)
+2. [Compound Finance](https://compound.finance)
+3. [Uniswap](https://uniswap.org)
+
+Although we are stewards of great value, we do not have access to the underlying
+tokens which are used to delegate voting power to us. However, we aim to improve
+security around interacting with decentralized protocols by introducing a suite
+of smart contracts that enable student organizations to experiment with writing
+Solidity and use their code to initiate votes and proposals!
+
+# DAO on DAO Action
+We point to the initial implementation of the [DAODAO](https://github.com/jmb-42/meta-governor).
+These smart contracts aim to give students the flexibility to implement
+different methods of initiating votes while also adding more security for
+delegators. For example, before a proposal can be submitted, students make a
+commitment to the proposal arguments that gives delegators a 3 day window to
+potentially remove their delegates, so that they can prevent harmful proposals
+from ever making it to the protocol, but which does not allow them to undermine
+student voting decisions. This would be totally optional from the side of the
+delegators, though, and they could choose to allow a proposal they disagree with
+to be submitted on-chain.
 
 # Decentralized Governance Super Interface
-This interface allows the super-user to super-do new super-proposals on cool
-awesome decentralized super-governance super-platforms directly on super-chain.
-Yeah, this has costs in the form of ETHER, so buy the ultra sound super-money
-today or get the rest of your meals from a super-soup kitchen for the rest of
-your days!
-
-# AH-MEN!
+This interface allows students to vote on each of the protocols we help
+govern. Additionally, it provides an interface for submitting new proposals.
 `;
 
 const useStyles = makeStyles((theme) => ({

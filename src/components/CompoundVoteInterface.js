@@ -76,6 +76,7 @@ function CompoundVoteInterface(props) {
                 onChange={supportOnChange}
             />
             <Button
+                disabled
                 className={classes.button}
                 variant='outlined'
                 onClick={

@@ -114,6 +114,7 @@ function AaveProposalInterface(props) {
                 className={classes.button}
                 variant='outlined'
                 onClick={proposeOnClick}
+                disabled
             >
                 propose
             </Button>

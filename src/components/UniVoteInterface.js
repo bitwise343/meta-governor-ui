@@ -67,6 +67,7 @@ function UniVoteInterface(props) {
                 onChange={e => setSupport(e.target.value)}
             />
             <Button
+                disabled
                 className={classes.button}
                 variant='outlined'
                 onClick={
