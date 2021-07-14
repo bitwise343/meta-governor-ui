@@ -26,7 +26,7 @@ of smart contracts that enable student organizations to experiment with writing
 Solidity and use their code to initiate votes and proposals!
 
 # DAO on DAO Action
-We point to the initial implementation of the [DAODAO](https://github.com/jmb-42/meta-governor).
+We point to the initial implementation of the [MetaDAO](https://github.com/jmb-42/meta-governor).
 These smart contracts aim to give students the flexibility to implement
 different methods of initiating votes while also adding more security for
 delegators. For example, before a proposal can be submitted, students make a

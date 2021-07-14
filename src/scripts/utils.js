@@ -46,7 +46,7 @@ function getPrices() {
     return fetch(
         'https://api.coingecko.com/api/v3/simple/price?ids=aave,compound-governance-token,uniswap&vs_currencies=usd'
     ).then(
-        (response) =>  response.json()
+        response =>  response.json()
     )
     .then(
         (data) => {
@@ -63,6 +63,9 @@ function getPrices() {
     );
 }
 
+/*
+  @dev we need to implement `multicall` here.
+*/
 async function getDelegates(provider) {
     const aave = aaveGovernanceStrategy(provider);
     const compound = compoundContract(provider);

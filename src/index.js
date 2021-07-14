@@ -9,11 +9,11 @@ import theme from './theme.js';
 
 ReactDOM.render(
   <React.StrictMode>
-  <ThemeProvider theme={theme}>
-  <CssBaseline>
-    <App />
-  </CssBaseline>
-  </ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline>
+        <App />
+      </CssBaseline>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
